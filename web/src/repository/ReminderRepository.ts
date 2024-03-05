@@ -1,7 +1,8 @@
 import NetworkHttp, {Http} from '../http/NetworkHttp.ts'
 
 export default interface ReminderRepository {
-    saveReminder(title: string): void
+    saveTodo(todo: string): void
+    getTodo(): Promise<string[]>
 }
 
 export class DefaultReminderRepository implements ReminderRepository {
@@ -10,7 +11,11 @@ export class DefaultReminderRepository implements ReminderRepository {
         this.http = http;
     }
 
-    saveReminder(title: string):void {
+    saveTodo(title: string):void {
         this.http.post('/api/reminder', title)
+    }
+
+    async getTodo(): Promise<string[]> {
+        return await this.http.get('/api/reminder') as string[]
     }
 }
