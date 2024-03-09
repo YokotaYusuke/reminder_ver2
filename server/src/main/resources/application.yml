@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DATABASE_URL}/reminder_v2
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
